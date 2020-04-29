@@ -26,7 +26,7 @@ Here is an example PBS script, which can also be downloaded from the file `Rhpc_
 #PBS -P Add your project name here
 #PBS -l select=2:ncpus=2:mpiprocs=2:mem=1GB
 #PBS -l walltime=00:02:00
-#PBS -q defaulQ
+#PBS -q defaultQ
 
 cd $PBS_O_WORKDIR
 

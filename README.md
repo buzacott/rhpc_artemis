@@ -66,7 +66,7 @@ Rhpc_sapply(cl, 1:10, sq)
 Rhpc_finalize()
 ```
 
-If all goes well, you should see a file named `Rhpc_example.Rout` which will contain:
+Submit the job using (e.g. `qsub Rhpc_example.pbs`) and if all goes well, you should see a file named `Rhpc_example.Rout` which will contain:
 
 ```
 > library(Rhpc)

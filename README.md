@@ -33,7 +33,7 @@ cd $PBS_O_WORKDIR
 module load R/3.6.0
 module load openmpi-gcc/1.10.3
 
-mpirun -machinefile $PBS_NODEFILE ~/R/x86_64-pc-linux-gnu-library/3.6/Rhpc/Rhpc CMD BATCH --no-save Rhpc_example.R
+mpiexec -machinefile $PBS_NODEFILE ~/R/x86_64-pc-linux-gnu-library/3.6/Rhpc/Rhpc CMD BATCH --no-save Rhpc_example.R
 ```
 
 ## R script

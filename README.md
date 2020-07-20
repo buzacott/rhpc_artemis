@@ -1,6 +1,6 @@
 ## Set up
 
-First of all you need to load the necessary modules and install [`Rhpc`](https://cran.r-project.org/package=Rhpc). Once you have logged into Artemis proceed with the following:
+First we need to load the necessary modules and install [`Rhpc`](https://cran.r-project.org/package=Rhpc). Once you have logged into Artemis proceed with the following:
 
 ```
 module load R/3.6.0
@@ -13,7 +13,7 @@ Once you have loaded those modules, install the Rhpc package with:
 
 `Rscript -e 'install.packages("Rhpc", repos="https://cloud.r-project.org")'`
 
-After that you are ready to submit a job. Here is an example of how you can use R and MPI.
+After that you are ready to submit a job.
 
 ## PBS Script
 
@@ -33,12 +33,12 @@ cd $PBS_O_WORKDIR
 module load R/3.6.0
 module load openmpi-gcc/1.10.3
 
-mpirun -np 4 -machinefile $PBS_NODEFILE ~/R/x86_64-pc-linux-gnu-library/3.6/Rhpc/Rhpc CMD BATCH --no-save Rhpc_example.R
+mpirun -machinefile $PBS_NODEFILE ~/R/x86_64-pc-linux-gnu-library/3.6/Rhpc/Rhpc CMD BATCH --no-save Rhpc_example.R
 ```
 
 ## R script
 
-This basic script will calculate the square of a number and tell you which node and compute core it was done on.
+This basic script will calculate the square of a number and tell you which node and compute core it was calculated on.
 
 ```r
 library(Rhpc)
@@ -66,7 +66,7 @@ Rhpc_sapply(cl, 1:10, sq)
 Rhpc_finalize()
 ```
 
-Submit the job using (e.g. `qsub Rhpc_example.pbs`) and if all goes well, you should see a file named `Rhpc_example.Rout` which will contain:
+Submit the job (`qsub Rhpc_example.pbs`) and if all goes well, you should see a file named `Rhpc_example.Rout` which will contain:
 
 ```
 > library(Rhpc)

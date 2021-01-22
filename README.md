@@ -3,11 +3,9 @@
 First we need to load the necessary modules and install [`Rhpc`](https://cran.r-project.org/package=Rhpc). Once you have logged into Artemis proceed with the following:
 
 ```
-module load R/3.6.0
-module load openmpi-gcc/1.10.3
+module load R/4.0.0
+module load openmpi-gcc/4.0.3
 ```
-
-These two versions I have confirmed to work. I tried R/3.6.3 and openmpi-gcc/3.1.5, however this resulted in segfaults when trying to close the cluster.
 
 Once you have loaded those modules, install the Rhpc package with:
 
@@ -30,10 +28,10 @@ Here is an example PBS script, which can also be downloaded from the file `Rhpc_
 
 cd $PBS_O_WORKDIR
 
-module load R/3.6.0
-module load openmpi-gcc/1.10.3
+module load R/4.0.0
+module load openmpi-gcc/4.0.3
 
-mpiexec -machinefile $PBS_NODEFILE ~/R/x86_64-pc-linux-gnu-library/3.6/Rhpc/Rhpc CMD BATCH --no-save Rhpc_example.R
+mpiexec -machinefile $PBS_NODEFILE ~/R/x86_64-pc-linux-gnu-library/4.0/Rhpc/Rhpc CMD BATCH --no-save Rhpc_example.R
 ```
 
 ## R script
@@ -80,7 +78,7 @@ Submit the job (`qsub Rhpc_example.pbs`) and if all goes well, you should see a 
 > 
 > # Initialise
 > Rhpc_initialize()
-reload mpi library /usr/local/openmpi/1.10.3-gcc/lib/libmpi.so.12
+reload mpi library /usr/local/openmpi/4.0.3-gcc/lib/libmpi.so.40
  rank/procs(     f.comm) : processor_name                   :   pid
     0/    4(          0) : hpc024                           : 153002
     1/    4(          0) : hpc024                           : 152997
@@ -103,7 +101,7 @@ Detected communication size 4
 > 
 > proc.time()
    user  system elapsed 
-  0.614   0.331   3.140 
+  0.382   0.093   2.706
 ```
 
 And the standard output will be written to a file `Rhpc_example.o` which contains the printed statements from the `sq` function:
